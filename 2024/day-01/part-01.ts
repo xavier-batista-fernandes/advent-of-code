@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 
-const data = fs.readFileSync('input', 'utf-8');
+const INPUT_PATH = 'inputs/target'
+const data = fs.readFileSync(INPUT_PATH, 'utf-8');
 const rows = data.split('\n');
 const numbers = rows.map(row => row.split('   ')).flat();
 
@@ -11,7 +12,7 @@ list1.sort();
 list2.sort();
 
 let total = 0;
-for(let i = 0; i < list1.length; i++) {
+for (let i = 0; i < list1.length; i++) {
     total += Math.abs(+list1[i] - +list2[i])
 }
 
