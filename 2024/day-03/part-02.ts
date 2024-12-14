@@ -21,7 +21,6 @@ const data = readFileSync(INPUT_PATH, 'utf-8');
 let index = 0;
 let result = 0;
 let areOpsEnabled = true;
-const count = [0, 0, 0];
 
 logText('Reading report...');
 while (index <= data.length) {
@@ -50,22 +49,20 @@ while (index <= data.length) {
   // Process the current pattern
   switch (nextOp.op) {
     case 'do':
-      count[0]++;
       logText('Enabling operations...');
       areOpsEnabled = true;
       break;
 
     case 'dont':
-      count[1]++;
       logText('Disabling operations...');
       areOpsEnabled = false;
       break;
 
     case 'mul':
-      count[2]++;
       logText('Multiplying numbers... ');
       result += areOpsEnabled ? +nextOp[1] * +nextOp[2] : 0;
       logText('New result: ' + '\x1b[34m' + result + '\x1b[0m');
+      break;
   }
 
   // Update the index to find next pattern
